@@ -3,9 +3,15 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    width: 100%;
     color: #f0f0f0;
     background-color: #0f0f0f;
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+* {
+    box-sizing: border-box; /* Consistent width calculations */
 }
 
 /* Social Icons Section */
@@ -14,14 +20,14 @@ body {
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
-    flex-wrap: wrap; /* Added wrap for smaller screens */
+    flex-wrap: wrap; /* Wrap for smaller screens */
 }
 
 .socials a {
     color: #ffffff;
     font-size: 1.5rem;
     transition: color 0.3s ease, transform 0.3s;
-    margin: 10px; /* Added margin for spacing on smaller screens */
+    margin: 10px; /* Margin for spacing on smaller screens */
 }
 
 .socials a:hover {
@@ -78,12 +84,12 @@ nav .center {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    margin-top: 10px; /* Added margin for spacing */
+    flex-wrap: wrap; /* Wrap links */
+    margin-top: 10px;
 }
 
 nav .center a {
-    color: #ffffff; /* White color for other links */
+    color: #ffffff;
     text-decoration: none;
     margin: 0 15px;
     font-size: 1.2em;
@@ -94,7 +100,7 @@ nav .center a {
 }
 
 nav .center a:hover {
-    color: #d4d4d4; /* Light grey on hover */
+    color: #d4d4d4;
     transform: scale(1.1);
 }
 
@@ -134,21 +140,29 @@ header {
     color: #39ff14;
     box-shadow: inset 0 0 30px rgba(0, 255, 0, 0.4);
     padding: 0 20px;
+    max-width: 100%; /* Prevent header from overflowing */
 }
-
-header h1 {
-    text-shadow: none; /* Remove the glow effect */
+header h1.name {
+    text-shadow: none;
     margin: 0;
-    font-size: 1.5em; /* Adjusted for smaller size */
+    font-size: 1em;
     color: #39ff14;
     text-align: center;
+    word-break: break-word; /* Handle long text */}
+header h1 {
+    text-shadow: none;
+    margin: 0;
+    font-size: 1.5em;
+    color: #39ff14;
+    text-align: center;
+    word-break: break-word; /* Handle long text */
 }
 
 header p {
     font-size: 1.3em;
     margin: 10px 0;
     color: #d4d4d4;
-    text-shadow: 0 0 10px #39ff14;
+    /* text-shadow: 0 0 10px #39ff14; */
 }
 
 header a {
@@ -205,12 +219,8 @@ footer a:hover {
         margin: 10px 0;
     }
 
-    header {
-        padding: 20px;
-    }
-
     header h1 {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     header p {
@@ -254,20 +264,103 @@ footer a:hover {
     }
 }
 
-/* Hollow text effect */
-/* Hollow text effect with outline */
+/* Hollow Text Effect */
 .hollow-text span {
-    font-size: 3.5em; /* Adjusted to fit the header */
+    font-size: 3.5em;
     font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 2px #39ff14; /* Green outline */
-    text-stroke: 2px #39ff14; /* Green outline */
-    transition: all 0.3s ease;
-    display: inline-block; /* Ensures words are separated */
+    color:  #39ff14;
+    text-align: left;
+    display: inline-block;
 }
 
-.hollow-text span:hover {
-    color: #39ff14; /* Fill the text with the green color on hover */
-    -webkit-text-stroke: 0px; /* Remove outline on hover */
-    text-stroke: 0px; /* Remove outline on hover */
+
+
+
+.hollow-text-white span {
+    font-size: 4.5em;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px #f2f8f1;
+    text-stroke: 2px #39ff14;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.hollow-text-white span:hover {
+    color: #39ff14;
+    -webkit-text-stroke: 0px;
+    text-stroke: 0px;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px;
+}
+
+.profile-photo {
+    width: 150px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits well */
+    margin-bottom: 15px; /* Space below the image */
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3); /* Add a glow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 255, 0, 0.5); /* Enhanced glow on hover */
+}
+.profile-photo-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the profile photo to the right */
+    align-items: center; /* Ensures the profile photo is vertically centered */
+    margin-right: 20px; /* Optional: Adds some spacing from the right edge */
+}
+.cursor {
+    width: 2px; /* Cursor width */
+    height: 1.2em; /* Cursor height, relative to font size */
+    background-color: #ffffff; /* Cursor color */
+    margin-left: 5px; /* Space between text and cursor */
+    animation: cursor-move 3s linear, blink 0.7s step-end infinite;
+}
+
+/* Keyframes for typing effect */
+/* Typing Effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Cursor Movement Effect */
+@keyframes cursor-move {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100%)); }
+}
+
+/* Cursor Blinking */
+@keyframes blink {
+    50% { background-color: transparent; }
+}
+.name-container {
+    text-align: right; /* Align the text to the right */
+    margin-right: 20px; /* Optional: Add spacing */
+}
+
+/* Name Styling with Typewriter Effect */
+.hollow-text {
+    font-size: 2em; /* Adjust font size as needed */
+    color: #ffffff; /* White text or customize as needed */
+    overflow: hidden; /* Hide the text overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    border-right: 2px solid #ffffff; /* Cursor effect */
+    animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+}
+.name {
+    overflow: hidden; /* Hide the text overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    animation: typing 3s steps(30, end); /* Typing effect */
 }
